@@ -1,3 +1,7 @@
+
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Commit(
     val author_email: String,
     val author_name: String,
@@ -8,7 +12,7 @@ data class Commit(
     val created_at: String,
     val id: String,
     val message: String,
-    val parent_ids: List<String>,
+    var parent_ids: List<String>,
     val short_id: String,
     val title: String
 )
