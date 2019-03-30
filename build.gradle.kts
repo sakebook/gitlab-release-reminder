@@ -25,6 +25,7 @@ dependencies {
     implementation("io.ktor", "ktor-client-json-jvm", "1.1.3")
     implementation("io.ktor", "ktor-client-okhttp", "1.1.3")
     implementation("org.jetbrains.kotlinx", "kotlinx-serialization-runtime", "0.10.0")
+    implementation("com.uchuhimo", "konf", "0.13.2")
     testImplementation("junit", "junit", "4.12")
 }
 
