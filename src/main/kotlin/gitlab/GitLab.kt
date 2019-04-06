@@ -4,7 +4,7 @@ import com.uchuhimo.konf.ConfigSpec
 import kotlinx.serialization.Serializable
 import java.util.*
 
-object GitLabConfig: ConfigSpec("") {
+object GitLabConfig : ConfigSpec("") {
     val api by required<Api>("api")
     val projects by required<List<Project>>("projects")
 }

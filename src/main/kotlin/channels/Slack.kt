@@ -13,11 +13,17 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.TimeZone
 
-object SlackConfig: ConfigSpec("") {
+object SlackConfig : ConfigSpec("") {
     val slack by required<Slack>("slack")
 }
 
-data class Slack(val webhook: String, val channel: String?, val mention: String, val userName: String?, val iconEmoji: String?): Channel {
+data class Slack(
+    val webhook: String,
+    val channel: String?,
+    val mention: String,
+    val userName: String?,
+    val iconEmoji: String?
+) : Channel {
 
     private val df: DateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm").apply {
         timeZone = TimeZone.getDefault()
