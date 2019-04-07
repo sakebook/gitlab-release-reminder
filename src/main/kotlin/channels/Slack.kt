@@ -36,9 +36,10 @@ data class Slack(
                 author_name = "Release Note",
                 fields = listOf(
                     Field(true, "title", it.commit.title),
-                    Field(true, "commit_hash", it.commit.id),
+                    Field(true, "author", it.commit.author_name),
+                    Field(true, "remindingDay", "${project.remindingDay}±1"),
                     Field(true, "created_at", df.format(it.commit.created_at)),
-                    Field(true, "author", it.commit.author_name)
+                    Field(true, "commit_hash", it.commit.id)
                 ),
                 pretext = "<@$mention>",
                 text = "${it.message}",
@@ -49,10 +50,10 @@ data class Slack(
             attachments,
             channel = this.channel,
             icon_emoji = this.iconEmoji,
-            text = "リリースしてから${project.remindingDay}日経過しました。そろそろ振り返りませんか？",
+            text = "リリースしてからしばらく時間が経っています。そろそろ振り返りませんか？",
             username = this.userName
         )
-        val json = Json.stringify<Message>(Message.serializer(), message)
+        val json = Json.stringify(Message.serializer(), message)
 
         val client = HttpClient()
         val slackUrl = this.webhook
