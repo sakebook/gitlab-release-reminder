@@ -35,3 +35,9 @@ configure<JavaPluginConvention> {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+jib {
+    container {
+        jvmFlags = listOf("-Dfile.encoding=UTF-8") // for JP
+    }
+}
