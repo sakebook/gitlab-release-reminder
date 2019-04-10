@@ -25,14 +25,13 @@ fun main(args: Array<String>) = runBlocking {
     }.from.file(fileName(args))
     val api = config[GitLabConfig.api]
     val projects = config[GitLabConfig.projects]
-    println("$api, $projects")
-
     val client = createClient(api)
 
     projects.forEach { project ->
-        val tags = fetchTag(client, project).latest(project.remindingDay)
+        val tags = fetchTag(client, project)
+        val filteredTags = filteredTag(tags, project)
         config.getOrNull(SlackConfig.slack)?.let {
-            postReminder(tags, project, config[SlackConfig.slack])
+            postReminder(filteredTags, project, config[SlackConfig.slack])
         }
     }
 }
@@ -77,13 +76,15 @@ private suspend fun fetchTag(client: HttpClient, project: Project): List<Tag> {
     return client.get("api/v4/projects/${project.id}/repository/tags")
 }
 
-private fun List<Tag>.latest(remindingDay: Long): List<Tag> {
+private fun filteredTag(tags: List<Tag>, project: Project): List<Tag> {
     val time = Date().time
-    return this.filter {
-        val days = (time - it.commit.created_at.time) / DAY_MILLIS
-        days == remindingDay || days == remindingDay - 1 || days == remindingDay + 1
+    return tags.filter {
+        val hours = (time - it.commit.created_at.time) / HOUR_MILLIS
+        val remindingHour = project.remindingDay * 24
+        val lowerLimit = remindingHour - project.lowerLimit
+        val upperLimit = remindingHour + project.upperLimit
+        hours in lowerLimit..upperLimit
     }
 }
 
 const val HOUR_MILLIS = 1000 * 60 * 60
-const val DAY_MILLIS = HOUR_MILLIS * 24

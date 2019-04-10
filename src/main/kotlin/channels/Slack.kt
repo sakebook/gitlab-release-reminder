@@ -50,7 +50,7 @@ data class Slack(
             attachments,
             channel = this.channel,
             icon_emoji = this.iconEmoji,
-            text = "リリースしてからしばらく時間が経っています。そろそろ振り返りませんか？",
+            text = "Let's look back on these releases.",
             username = this.userName
         )
         val json = Json.stringify(Message.serializer(), message)
