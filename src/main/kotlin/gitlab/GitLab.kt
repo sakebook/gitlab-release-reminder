@@ -9,7 +9,13 @@ object GitLabConfig : ConfigSpec("") {
     val projects by required<List<Project>>("projects")
 }
 
-data class Project(val id: Int, val note: String?, val remindingDay: Long, val upperLimit: Int = 7, val lowerLimit: Int = 7)
+data class Project(
+    val id: Int,
+    val note: String?,
+    val remindingDay: Long,
+    val iconUrl: String?,
+    val upperLimit: Int = 12,
+    val lowerLimit: Int = 12)
 
 data class Api(val host: String, val token: String?)
 

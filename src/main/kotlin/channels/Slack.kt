@@ -37,12 +37,13 @@ data class Slack(
                 fields = listOf(
                     Field(true, "title", it.commit.title),
                     Field(true, "author", it.commit.author_name),
-                    Field(true, "remindingDay", "${project.remindingDay}±1"),
+                    Field(true, "remindingDay", "${project.remindingDay}"),
                     Field(true, "created_at", df.format(it.commit.created_at)),
                     Field(true, "commit_hash", it.commit.id)
                 ),
-                pretext = "<@$mention>",
+                pretext = "<$mention>",
                 text = "${it.message}",
+                thumb_url = project.iconUrl,
                 title = it.name
             )
         }
