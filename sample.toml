@@ -9,4 +9,4 @@ remindingDay = 7
 
 [slack]
 webhook = "https://hooks.slack.com/services/XXXXXXXXXXXXXXXXXXXXXXXXX"
-mention = "XXXXXXXXX"
+mention = "!here"
