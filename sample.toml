@@ -9,7 +9,4 @@ remindingDay = 7
 
 [slack]
 webhook = "https://hooks.slack.com/services/XXXXXXXXXXXXXXXXXXXXXXXXX"
-#channel = "#general"
 mention = "XXXXXXXXX"
-userName = "release-reminder"
-iconEmoji = ":eyes:"

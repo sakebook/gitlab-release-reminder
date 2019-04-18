@@ -1,0 +1,16 @@
+{
+  "api": {
+    "host": "gitlab.com"
+  },
+  "projects": [
+    {
+      "id": 13083,
+      "note": "https://gitlab.com/gitlab-org/gitlab-ce/tags",
+      "remindingDay": 7
+    }
+  ],
+  "slack": {
+    "webhook": "https://hooks.slack.com/services/XXXXXXXXXXXXXXXXXXXXXXXXX",
+    "mention": "XXXXXXXXX"
+  }
+}
