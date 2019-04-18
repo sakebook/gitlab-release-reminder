@@ -37,6 +37,9 @@ tasks.withType<KotlinCompile> {
 }
 
 jib {
+    to {
+        image = "sakebook/gitlab-release-reminder"
+    }
     container {
         jvmFlags = listOf("-Dfile.encoding=UTF-8") // for JP
     }
