@@ -5,6 +5,11 @@ host = "gitlab.com"
 [[projects]]
 id = 13083
 note = "https://gitlab.com/gitlab-org/gitlab-ce/tags"
+remindingDay = 14
+
+[[projects]]
+id = 278964
+note = "https://gitlab.com/gitlab-org/gitlab-ee/tags"
 remindingDay = 7
 
 [slack]
