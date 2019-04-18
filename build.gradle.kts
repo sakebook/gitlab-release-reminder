@@ -2,13 +2,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.3.20"
+    kotlin("jvm") version "1.3.30"
     id("com.google.cloud.tools.jib") version "1.0.2"
     id("kotlinx-serialization") version ("1.3.0")
 }
 
 group = "com.github.sakebook"
-version = "0.0.2"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -37,6 +37,9 @@ tasks.withType<KotlinCompile> {
 }
 
 jib {
+    to {
+        image = "sakebook/gitlab-release-reminder"
+    }
     container {
         jvmFlags = listOf("-Dfile.encoding=UTF-8") // for JP
     }

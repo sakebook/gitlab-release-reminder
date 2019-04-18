@@ -19,10 +19,7 @@ object SlackConfig : ConfigSpec("") {
 
 data class Slack(
     val webhook: String,
-    val channel: String?,
-    val mention: String,
-    val userName: String?,
-    val iconEmoji: String?
+    val mention: String
 ) : Channel {
 
     private val df: DateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm").apply {
@@ -49,10 +46,7 @@ data class Slack(
         }
         val message = Message(
             attachments,
-            channel = this.channel,
-            icon_emoji = this.iconEmoji,
-            text = "Let's look back on these releases.",
-            username = this.userName
+            text = "Let's look back on these releases."
         )
         val json = Json.stringify(Message.serializer(), message)
 

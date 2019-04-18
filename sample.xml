@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property>
+        <name>api.host</name>
+        <value>gitlab.com</value>
+    </property>
+    <property>
+        <name>projects.0.id</name>
+        <value>13083</value>
+    </property>
+    <property>
+        <name>projects.0.note</name>
+        <value>https://gitlab.com/gitlab-org/gitlab-ce/tags</value>
+    </property>
+    <property>
+        <name>projects.0.remindingDay</name>
+        <value>14</value>
+    </property>
+    <property>
+        <name>projects.1.id</name>
+        <value>278964</value>
+    </property>
+    <property>
+        <name>projects.1.note</name>
+        <value>https://gitlab.com/gitlab-org/gitlab-ce/tags</value>
+    </property>
+    <property>
+        <name>projects.1.remindingDay</name>
+        <value>7</value>
+    </property>
+    <property>
+        <name>slack.webhook</name>
+        <value>https://hooks.slack.com/services/XXXXXXXXXXXXXXXXXXXXXXXXX</value>
+    </property>
+    <property>
+        <name>slack.mention</name>
+        <value>!here</value>
+    </property>
+</configuration>

@@ -15,7 +15,8 @@ data class Project(
     val remindingDay: Long,
     val iconUrl: String?,
     val upperLimit: Int = 12,
-    val lowerLimit: Int = 12)
+    val lowerLimit: Int = 12
+)
 
 data class Api(val host: String, val token: String?)
 

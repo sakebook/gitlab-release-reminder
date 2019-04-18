@@ -6,9 +6,6 @@ import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.KSerializer
@@ -30,14 +27,18 @@ fun main(args: Array<String>) = runBlocking {
     projects.forEach { project ->
         val tags = fetchTag(client, project)
         val filteredTags = filteredTag(tags, project)
+        println("Filtered tags count are ${filteredTags.size} from project id ${project.id}.")
+        if (filteredTags.isEmpty()) {
+            return@forEach
+        }
         config.getOrNull(SlackConfig.slack)?.let {
+            println("Post to Slack. Project id ${project.id}")
             postReminder(filteredTags, project, config[SlackConfig.slack])
         }
     }
 }
 
 fun postReminder(tags: List<Tag>, project: Project, channel: Channel) {
-    if (tags.isEmpty()) return
     channel.post(tags, project)
 }
 
